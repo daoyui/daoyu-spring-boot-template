@@ -1,0 +1,61 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: daoyu-spring-boot-template
+  profiles:
+    active: dev
+  datasource:
+    druid:
+      filters: stat,wall,log4j2
+      # 最大、最小、初始化连接数
+      max-active: 20
+      min-idle: 1
+      initial-size: 1
+      # 获取连接等待超时的时间
+      max-wait: 6000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      async-init: true
+      filter:
+        stat:
+          enabled: true
+          db-type: mysql
+          log-slow-sql: true
+          slow-sql-millis: 2000
+        slf4j:
+          enabled: true
+          statement-log-error-enabled: true
+          statement-create-after-log-enabled: false
+          statement-close-after-log-enabled: false
+          result-set-open-after-log-enabled: false
+          result-set-close-after-log-enabled: false
+      # 配置WebStatFilter，用于采集web关联监控的数据
+      web-stat-filter:
+        # 启动 StatFilter
+        enabled: true
+        url-pattern: /*
+        # 过滤所有url 排除一些不必要的url
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        # 开启session统计功能
+        session-stat-enable: true
+        # session的最大个数,默认100
+        session-stat-max-count: 1000
+      # 配置StatViewServlet（监控页面），用于展示Druid的统计信息
+      stat-view-servlet:
+        # 启用StatViewServlet
+        enabled: true
+        # 访问内置监控页面的路径，内置监控页面的首页是/druid/index.html
+        url-pattern: /druid/*
+        # 不允许清空统计数据,重新计算
+        reset-enable: false
+
+

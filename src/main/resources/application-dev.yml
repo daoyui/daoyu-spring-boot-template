@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/daoyu-spring-boot-template
+      username: root
+      password: 123456
+      stat-view-servlet:
+        # 配置监控页面访问密码
+        login-username: root
+        login-password: 123456
+        # 允许访问的地址，如果allow没有配置或者为空，则允许所有访问
+        allow:
+        # 拒绝访问的地址，deny优先于allow，如果在deny列表中，就算在allow列表中，也会被拒绝
+        deny:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 5000ms
+    database: 1
+    jedis:
+      pool:
+        max-active: 20
+        max-idle: 10
+        min-idle: 5
+        max-wait: 5000ms

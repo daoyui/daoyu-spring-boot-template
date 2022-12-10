@@ -19,18 +19,38 @@ repositories {
 }
 
 dependencies {
+    // Spring Boot 系统健康状态检查
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    // Spring Boot 消息队列相关依赖
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    // Spring Boot Redis
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    // Spring Boot Freemarker（模板引擎）
     implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+    // Spring Security
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    // Validation 用于接口参数校验
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    // Spring Boot Web
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'com.alibaba:fastjson:1.2.72'
-    implementation 'org.apache.commons:commons-lang3:3.1'
+    // Spring Boot Session（Session共享）
     implementation 'org.springframework.session:spring-session-data-redis'
+    // Guava
+    implementation group: 'com.google.guava', name: 'guava', version: '31.1-jre'
+    // Mybatis-Plus
+    implementation group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.5.1'
+    // Druid 数据库连接池
+    implementation group: 'com.alibaba', name: 'druid-spring-boot-starter', version: '1.2.15'
+    // JSON 序列化 fastjson2（比fastjson 有一定性能提高）
+    implementation group: 'com.alibaba.fastjson2', name: 'fastjson2', version: '2.0.20'
+    // Lang3 工具
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    // Hutool 工具
+    implementation 'cn.hutool:hutool-all:5.8.10'
+    // MySQL Drive
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
+    // Lombok
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
