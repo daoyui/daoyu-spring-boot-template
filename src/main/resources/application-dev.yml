@@ -25,3 +25,7 @@ spring:
         max-idle: 10
         min-idle: 5
         max-wait: 5000ms
+
+# 开启 swagger 接口文档
+swagger:
+  enabled: true
