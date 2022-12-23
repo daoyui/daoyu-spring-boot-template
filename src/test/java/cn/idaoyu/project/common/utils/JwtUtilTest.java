@@ -19,7 +19,7 @@ class JwtUtilTest {
 
     @Test
     void checkJwtToken() {
-        int num = JwtUtil.checkJwtToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbXSwiaWF0IjoxNjcxODE4MDk2LCJleHAiOjE2NzI0MTU5OTksImF1ZCI6IiIsImlzcyI6ImRhb3l1LXNwcmluZy1ib290LXRlbXBsYXRlIiwic3ViIjoiIn0.Cz3t0lR899DyRo26I_A3DG2bogikF2zmYydDGAp6Il0");
+        int num = JwtUtil.checkJwtToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbXSwiaWF0IjoxNjcxODE4MDk2LCJleHAiOjE2NzI0MTU5OTksImF1ZCI6IiIsImlzcyI6ImRhb3l1LXNwcmluZy1ib290LXRlbXBsYXRlIiwic3ViIjoiIn0.Cz3t0lR899DyRo26I_A3DG2bogikF2zmYydDGAp6Il0", "username");
         System.out.println(num);
     }
 }

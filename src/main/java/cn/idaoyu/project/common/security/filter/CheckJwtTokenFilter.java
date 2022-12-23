@@ -57,7 +57,7 @@ public class CheckJwtTokenFilter extends OncePerRequestFilter {
      * @return 用户名
      */
     private String checkTokenAndGetUsername(String token) {
-        int status = JwtUtil.checkJwtToken(token);
+        int status = JwtUtil.checkJwtToken(token, "username");
         switch (status) {
             case 1:
                 // token 有效但过期了
@@ -66,7 +66,7 @@ public class CheckJwtTokenFilter extends OncePerRequestFilter {
             case 2:
                 // token 有效且没过期
                 tokenStatus.setTokenStatus(true, true);
-                return JwtUtil.getUsername(token);
+                return JwtUtil.getClaim(token, "username");
             default:
                 // 默认 token 无效
                 tokenStatus.setTokenStatus(false, false);

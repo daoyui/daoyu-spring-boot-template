@@ -59,7 +59,7 @@ public class JwtUtil {
      * @param token jwt token
      * @return 2：token有效且没过期，1：token有效但过期了，0：token无效
      */
-    public static int checkJwtToken(String token) {
+    public static int checkJwtToken(String token, String notNullParams) {
         try {
             if (null == token) {
                 return 0;
@@ -71,7 +71,7 @@ public class JwtUtil {
             DecodedJWT decodedJwt = verifier.verify(token);
 
             // verity 自定义参数
-            String username = decodedJwt.getClaim("username").asString();
+            String username = decodedJwt.getClaim(notNullParams).asString();
             if (StrUtil.isBlank(username)) {
                 return 0;
             }
@@ -84,8 +84,15 @@ public class JwtUtil {
         return 2;
     }
 
-    public static String getUsername(String token) {
+    /**
+     * 获取 jwt 中的信息
+     *
+     * @param token jwt token
+     * @param name  要获取的字段名字
+     * @return value
+     */
+    public static String getClaim(String token, String name) {
         DecodedJWT jwt = JWT.decode(token);
-        return jwt.getClaim("username").asString();
+        return jwt.getClaim(name).asString();
     }
 }

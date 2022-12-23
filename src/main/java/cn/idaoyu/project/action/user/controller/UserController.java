@@ -1,6 +1,7 @@
 package cn.idaoyu.project.action.user.controller;
 
 import cn.idaoyu.project.action.user.business.UserService;
+import cn.idaoyu.project.action.user.data.RefreshTokenParams;
 import cn.idaoyu.project.action.user.data.RegisterParams;
 import cn.idaoyu.project.action.user.data.RegisterResponse;
 import io.swagger.annotations.Api;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
 
 /**
  * @author 一条秋刀鱼zz
@@ -31,6 +34,11 @@ public class UserController {
     @ApiOperation("注册")
     public RegisterResponse register(@Validated @RequestBody RegisterParams params) {
         return userService.register(params);
+    }
+
+    @PostMapping(value = "/refreshToken")
+    public String refreshToken(@Validated @RequestBody RefreshTokenParams params) throws IOException {
+        return userService.refreshToken(params);
     }
 
 }
