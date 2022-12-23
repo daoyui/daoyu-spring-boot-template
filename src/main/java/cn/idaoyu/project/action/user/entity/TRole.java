@@ -5,8 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -20,6 +22,8 @@ import java.util.Date;
 @Schema
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName(value = "t_role")
 public class TRole implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)

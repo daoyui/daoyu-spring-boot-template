@@ -21,4 +21,13 @@ public interface TUserRoleService extends IService<TUserRole> {
      */
     List<Long> queryRoleIdByUserId(Long userId);
 
+    /**
+     * 给用户添加默认角色
+     *
+     * @param userId   用户id
+     * @param username 用户名（账号）
+     * @return 是否成功
+     */
+    boolean insertDefaultRole(Long userId, String username);
+
 }

@@ -19,4 +19,14 @@ public interface TUserService extends IService<TUser> {
      */
     TUser queryByUsername(String username);
 
+    /**
+     * 创建用户
+     *
+     * @param username 用户名
+     * @param password 密码（加密后的）
+     * @param nickname 昵称
+     * @return 是否成功
+     */
+    Long createUser(String username, String password, String nickname);
+
 }

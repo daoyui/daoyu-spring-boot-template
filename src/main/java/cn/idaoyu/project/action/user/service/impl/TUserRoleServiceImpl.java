@@ -27,4 +27,15 @@ public class TUserRoleServiceImpl extends ServiceImpl<TUserRoleMapper, TUserRole
         wrapper.eq(TUserRole::getUserId, userId);
         return super.list(wrapper).stream().map(TUserRole::getRoleId).collect(Collectors.toList());
     }
+
+    @Override
+    public boolean insertDefaultRole(Long userId, String username) {
+        TUserRole.TUserRoleBuilder builder = TUserRole.builder();
+        builder.userId(userId);
+        builder.username(username);
+        // 这里直接写死，默认不动
+        builder.roleId(1L);
+        builder.roleName("ROLE_USER");
+        return super.save(builder.build());
+    }
 }

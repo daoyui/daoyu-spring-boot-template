@@ -6,8 +6,10 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -24,6 +26,8 @@ import java.util.Date;
 @ApiModel(value = "用户表")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName(value = "t_user")
 public class TUser implements UserDetails, Serializable {
     @TableId(value = "id", type = IdType.AUTO)
