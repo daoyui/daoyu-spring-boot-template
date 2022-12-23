@@ -2,6 +2,8 @@ package cn.idaoyu.project.common.security.filter;
 
 import cn.hutool.core.util.StrUtil;
 import cn.idaoyu.project.common.security.service.impl.JwtUserDetailsServiceImpl;
+import cn.idaoyu.project.common.security.utils.TokenStatus;
+import cn.idaoyu.project.common.utils.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,6 +31,7 @@ public class CheckJwtTokenFilter extends OncePerRequestFilter {
 
     private static final String TOKEN_HEADER_NAME = "Authentication";
     private final JwtUserDetailsServiceImpl jwtUserDetailsService;
+    private final TokenStatus tokenStatus;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -54,7 +57,21 @@ public class CheckJwtTokenFilter extends OncePerRequestFilter {
      * @return 用户名
      */
     private String checkTokenAndGetUsername(String token) {
-        return null;
+        int status = JwtUtil.checkJwtToken(token);
+        switch (status) {
+            case 1:
+                // token 有效但过期了
+                tokenStatus.setTokenStatus(true, false);
+                return null;
+            case 2:
+                // token 有效且没过期
+                tokenStatus.setTokenStatus(true, true);
+                return JwtUtil.getUsername(token);
+            default:
+                // 默认 token 无效
+                tokenStatus.setTokenStatus(false, false);
+                return null;
+        }
     }
 
 }

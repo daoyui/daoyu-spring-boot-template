@@ -23,7 +23,7 @@ import java.io.IOException;
  */
 public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
-    private static final AntPathRequestMatcher DEFAULT_ANT_PATH_REQUEST_MATCHER = new AntPathRequestMatcher("/login",
+    private static final AntPathRequestMatcher DEFAULT_ANT_PATH_REQUEST_MATCHER = new AntPathRequestMatcher("/user/login",
             "POST");
 
     public JwtAuthenticationFilter() {
@@ -39,8 +39,8 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
         }
         UserLoginInfoVo userLoginInfoVo;
         try {
-            String requestJSONString = ServletUtil.getBody(request);
-            userLoginInfoVo = JSONObject.parseObject(requestJSONString, UserLoginInfoVo.class);
+            String requestJsonString = ServletUtil.getBody(request);
+            userLoginInfoVo = JSONObject.parseObject(requestJsonString, UserLoginInfoVo.class);
         } catch (Exception e) {
             throw new AuthenticationServiceException("不支持的请求数据类型！");
         }

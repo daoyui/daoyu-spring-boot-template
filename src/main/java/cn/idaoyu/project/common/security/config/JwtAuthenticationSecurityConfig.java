@@ -28,8 +28,7 @@ public class JwtAuthenticationSecurityConfig extends SecurityConfigurerAdapter<D
     private final UserDetailsService userDetailsService;
     private final LoginAuthenticationSuccessHandler loginAuthenticationSuccessHandler;
     private final LoginAuthenticationFailureHandler loginAuthenticationFailureHandler;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public void configure(HttpSecurity builder) throws Exception {
