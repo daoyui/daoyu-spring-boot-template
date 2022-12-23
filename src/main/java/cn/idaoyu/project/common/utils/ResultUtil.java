@@ -14,6 +14,19 @@ public class ResultUtil {
     /**
      * 请求成功
      *
+     * @return Result
+     */
+    public static Result isOk() {
+        Result.ResultBuilder builder = Result.builder();
+        builder.code(ResponseCodeEnum.SUCCESS.getValue());
+        builder.msg("success");
+        builder.timestamp(System.currentTimeMillis());
+        return builder.build();
+    }
+
+    /**
+     * 请求成功
+     *
      * @param data 响应数据
      * @return Result
      */
